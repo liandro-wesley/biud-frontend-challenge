@@ -5,7 +5,7 @@ type HomeProps = {
   getAllArticles: GetAllArticles;
 };
 
-const Home: React.FC<HomeProps> = ({ getAllArticles }) => {
+const Home: React.FC<HomeProps> = () => {
   return <h1>Lista todos os posts</h1>;
 };
 
