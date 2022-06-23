@@ -1,0 +1,14 @@
+import React, { ReactNode } from 'react';
+import * as S from './styles';
+
+export type {{pascalCase name}}Props = {
+  children: ReactNode;
+}
+
+const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({ children }) => (
+  <S.Wrapper>
+    {children}
+  </S.Wrapper>
+);
+
+export default {{pascalCase name}};

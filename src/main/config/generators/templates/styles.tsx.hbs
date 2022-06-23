@@ -1,0 +1,12 @@
+import styled, { css } from "styled-components";
+import { BasicComponentProps } from '@presentation/helpers/basic-component-props'
+
+type {{pascalCase name}}Props = {
+  exampleProp?: any;
+} & BasicComponentProps
+
+export const Wrapper = styled.div<{{pascalCase name}}Props>`
+  ${({ theme }) => css`
+    background-color: red;
+  `}
+`
