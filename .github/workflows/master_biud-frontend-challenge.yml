@@ -58,4 +58,4 @@ jobs:
           app-name: 'biud-frontend-challenge'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B61BD553FB2440F8BEDCED776EE13BB4 }}
-          package: .
+          package: release.zip
