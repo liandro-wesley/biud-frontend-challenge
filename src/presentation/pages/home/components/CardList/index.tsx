@@ -1,6 +1,6 @@
 import React from "react";
 import { useHomeContext } from "../../context";
-import { Skeleton, Box, Fade } from "@mui/material";
+import { Skeleton, Box, Fade, Typography } from "@mui/material";
 import { InsertPageBreak } from "@mui/icons-material";
 import Card from "../Card";
 
@@ -132,8 +132,26 @@ const CardList: React.FC = () => {
       {!loading && (
         <>
           {articles.length === 0 && (
-            <Box>
-              <InsertPageBreak />
+            <Box
+              sx={{
+                display: { xs: "flex" },
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "calc(100vh - 30vh)",
+                gap: 5,
+                color: "text.secondary",
+              }}
+            >
+              <InsertPageBreak
+                sx={{
+                  fontSize: "5rem",
+                }}
+                color="inherit"
+              />
+              <Typography variant="h5" color="inherit">
+                Oops! Não há nenhuma publicação por aqui
+              </Typography>
             </Box>
           )}
           {articles.length > 0 && (
