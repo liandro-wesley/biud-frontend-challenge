@@ -30,23 +30,21 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
   const [articles, setArticles] = useState<GetAllArticlesModel>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const triggerToGetAllArticles = async () => {
-    try {
-      setLoading(true);
-      const response = await getAllArticles.getAll();
-      setArticles(response);
-    } catch (err) {
-      setLoading(false);
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const triggerToGetAllArticles = async () => {
+      try {
+        setLoading(true);
+        const response = await getAllArticles.getAll();
+        setArticles(response);
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
     triggerToGetAllArticles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [getAllArticles]);
 
   const value = {
     articles,
