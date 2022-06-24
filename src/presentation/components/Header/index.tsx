@@ -9,17 +9,33 @@ import {
   Menu,
   Container,
   Avatar,
-  Button,
   Tooltip,
+  Button,
   MenuItem,
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const pages = ["Feed", "Minhas publicações", "Minhas categorias"];
+const pages = [
+  {
+    to: "/",
+    label: "Feed",
+  },
+  {
+    to: "/my-posts",
+    label: "Minhas publicações",
+  },
+  {
+    to: "/my-categories",
+    label: "Minhas categorias",
+  },
+];
 const settings = ["Logar", "Deslogar"];
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -81,23 +97,42 @@ const Header: React.FC = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.label}>
+                  <Button
+                    key={page.label}
+                    onClick={() => {
+                      handleCloseNavMenu();
+                      navigate(`${page.to}`);
+                    }}
+                    sx={{
+                      color: `${pathname === page.to ? "red" : "#374151"}`,
+                      display: "block",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {page.label}
+                  </Button>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 1 }}
+          >
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.label}
                 onClick={() => {
                   handleCloseNavMenu();
+                  navigate(`${page.to}`);
                 }}
-                sx={{ my: 2, color: "#374151", display: "block" }}
+                sx={{
+                  color: `${pathname === page.to ? "#D81656" : "#374151"}`,
+                  display: "block",
+                  textDecoration: "none",
+                }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>

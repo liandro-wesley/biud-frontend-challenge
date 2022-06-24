@@ -9,10 +9,11 @@ import {
   Fade,
   Button,
   CardActions,
+  Tooltip,
 } from "@mui/material";
 import { Bookmark, AccessTimeFilled, Share } from "@mui/icons-material";
 import { GetAllArticlesResult } from "@data/models/get-all-articles-result";
-import CustomMuiLink from "../CustomMuiLink";
+import CustomMuiLink from "../../../../components/CustomMuiLink";
 import readingTime from "@presentation/helpers/readingTime";
 
 const Card: React.FC<Omit<GetAllArticlesResult, "_id">> = ({
@@ -20,6 +21,7 @@ const Card: React.FC<Omit<GetAllArticlesResult, "_id">> = ({
   description,
   slug,
   title,
+  author,
 }) => {
   return (
     <Fade in>
@@ -75,9 +77,11 @@ const Card: React.FC<Omit<GetAllArticlesResult, "_id">> = ({
                 </Box>
               </Typography>
             </Box>
-            <Button color="inherit">
-              <Share />
-            </Button>
+            <Tooltip title="Compartilhe com os amigos">
+              <Button color="inherit">
+                <Share />
+              </Button>
+            </Tooltip>
           </Box>
         </CardActions>
         <CardActionArea>
@@ -90,6 +94,16 @@ const Card: React.FC<Omit<GetAllArticlesResult, "_id">> = ({
             to={`/details/${slug}`}
           >
             <CardContent>
+              <Typography
+                sx={{
+                  mb: 1,
+                }}
+                gutterBottom
+                variant="overline"
+                component="p"
+              >
+                Publicado por: {author}
+              </Typography>
               <Typography gutterBottom variant="h5" component="h5">
                 {title}
               </Typography>
