@@ -19,7 +19,6 @@ const Card: React.FC<Omit<GetAllArticlesResult, "_id">> = ({
   category,
   description,
   slug,
-  author,
   title,
 }) => {
   return (
