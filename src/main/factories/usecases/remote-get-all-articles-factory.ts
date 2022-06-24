@@ -5,7 +5,7 @@ import { makeAxiosHttpClient } from "../http/axios-http-client-factory";
 
 export const makeGetAllArticles = (): GetAllArticles => {
   return new RemoteGetAllArticles(
-    makeApiUrl("/articles"),
+    makeApiUrl("/article"),
     makeAxiosHttpClient()
   );
 };

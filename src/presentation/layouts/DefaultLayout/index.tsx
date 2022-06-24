@@ -10,7 +10,14 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="xl">{children}</Container>
+      <Container
+        sx={{
+          mt: 5,
+        }}
+        maxWidth="md"
+      >
+        {children}
+      </Container>
     </>
   );
 };

@@ -4,4 +4,5 @@ export type GetAllArticlesResult = {
   slug: string;
   description: string;
   category: string;
+  author: string;
 };
