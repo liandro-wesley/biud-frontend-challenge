@@ -1,5 +1,6 @@
 import { GetAllArticlesModel } from "@domain/models/get-all-articles-model";
 import { GetAllArticles } from "@domain/usecases/get-all-articles";
+import { useNotification } from "@presentation/contexts/notification-context";
 import React, {
   createContext,
   useContext,
@@ -27,6 +28,7 @@ export function useHomeContext() {
 }
 
 export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
+  const { setNotification } = useNotification();
   const [articles, setArticles] = useState<GetAllArticlesModel>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -38,7 +40,11 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
         setArticles(response);
       } catch (err) {
         setLoading(false);
-        console.log(err);
+        setNotification({
+          open: true,
+          type: "error",
+          message: `${err}`,
+        });
       } finally {
         setLoading(false);
       }
