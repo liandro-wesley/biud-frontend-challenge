@@ -51,23 +51,6 @@ const Header: React.FC = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "#D81656",
-              textDecoration: "none",
-            }}
-          >
-            BIUD BLOG
-          </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -104,23 +87,7 @@ const Header: React.FC = () => {
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "#D81656",
-              textDecoration: "none",
-            }}
-          >
-            BIUD BLOG
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
