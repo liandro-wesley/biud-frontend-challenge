@@ -5,8 +5,6 @@ import React, {
   useContext,
   ReactNode,
   useState,
-  Dispatch,
-  SetStateAction,
   useEffect,
 } from "react";
 
@@ -36,7 +34,6 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
     try {
       setLoading(true);
       const response = await getAllArticles.getAll();
-      console.log(response);
       setArticles(response);
     } catch (err) {
       setLoading(false);
@@ -48,6 +45,7 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
 
   useEffect(() => {
     triggerToGetAllArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const value = {
