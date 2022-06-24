@@ -8,7 +8,7 @@ export class RemoteGetAllArticles implements GetAllArticles {
     private readonly httpClient: HttpClient<GetAllArticlesModel>
   ) {}
 
-  async getAll(): Promise<GetAllArticlesModel> {
+  async search(): Promise<GetAllArticlesModel> {
     const httpResponse = await this.httpClient.request({
       url: this.url,
       method: "get",

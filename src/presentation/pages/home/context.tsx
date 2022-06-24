@@ -36,7 +36,7 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
     const triggerToGetAllArticles = async () => {
       try {
         setLoading(true);
-        const response = await getAllArticles.getAll();
+        const response = await getAllArticles.search();
         setArticles(response);
       } catch (err) {
         setLoading(false);

@@ -3,7 +3,6 @@ import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
 } from "react-router-dom";
-import { LinkProps } from "@mui/material";
 
 type CustomMuiLinkProps = RouterLinkProps;
 
