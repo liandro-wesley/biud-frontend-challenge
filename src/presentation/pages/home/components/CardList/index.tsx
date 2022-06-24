@@ -15,7 +15,7 @@ const CardList: React.FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: { xs: "flex" },
+                  display: "flex",
                   gap: 1,
                   mb: 1,
                 }}
@@ -38,7 +38,7 @@ const CardList: React.FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: { xs: "flex" },
+                  display: "flex",
                   gap: 1,
                   mb: 1,
                 }}
@@ -61,7 +61,7 @@ const CardList: React.FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: { xs: "flex" },
+                  display: "flex",
                   gap: 1,
                   mb: 1,
                 }}
@@ -84,7 +84,7 @@ const CardList: React.FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: { xs: "flex" },
+                  display: "flex",
                   gap: 1,
                   mb: 1,
                 }}
@@ -107,7 +107,7 @@ const CardList: React.FC = () => {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: { xs: "flex" },
+                  display: "flex",
                   gap: 1,
                   mb: 1,
                 }}
@@ -134,7 +134,7 @@ const CardList: React.FC = () => {
           {articles.length === 0 && (
             <Box
               sx={{
-                display: { xs: "flex" },
+                display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
