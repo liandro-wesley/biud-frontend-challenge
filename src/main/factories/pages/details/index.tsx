@@ -5,6 +5,5 @@ import { makeRemoteGetArticleDetails } from "../../usecases/remote-get-article-d
 
 export const MakeDetails: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  console.log(slug);
   return <Details getArticleDetails={makeRemoteGetArticleDetails(`${slug}`)} />;
 };

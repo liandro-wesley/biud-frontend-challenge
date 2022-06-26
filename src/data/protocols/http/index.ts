@@ -10,12 +10,11 @@ export type HttpRequest = {
   headers?: HttpRequestHeaders;
 };
 
-export type HtppMethod = "get";
+export type HtppMethod = "get" | "post" | "put" | "delete";
 
 export enum HttpStatusCode {
   ok = 200,
-  unauthorized = 401,
-  notFound = 404,
+  created = 201,
 }
 
 export type HttpResponse<T = any> = {

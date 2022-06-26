@@ -14,7 +14,7 @@ import {
   AccessTimeFilled,
   Share,
 } from "@mui/icons-material";
-import { useDetailsContext } from "../context";
+import { useDetailsContext } from "../../context";
 import CustomMuiLink from "@presentation/components/CustomMuiLink";
 import readingTime from "@presentation/helpers/readingTime";
 

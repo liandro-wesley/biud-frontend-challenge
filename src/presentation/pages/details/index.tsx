@@ -1,7 +1,7 @@
 import React from "react";
 import { GetArticleDetails } from "@domain/usecases/get-article-details";
 import { DetailsConsumer } from "./context";
-import ReadPost from "./ReadPost";
+import ReadPost from "./components/ReadPost";
 
 type HomeProps = {
   getArticleDetails: GetArticleDetails;

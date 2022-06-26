@@ -38,12 +38,12 @@ export function HomeConsumer({ children, getAllArticles }: HomeConsumerProps) {
         setLoading(true);
         const response = await getAllArticles.search();
         setArticles(response);
-      } catch (err) {
+      } catch (err: any) {
         setLoading(false);
         setNotification({
           open: true,
           type: "error",
-          message: `${err}`,
+          message: `${err.message}`,
         });
       } finally {
         setLoading(false);

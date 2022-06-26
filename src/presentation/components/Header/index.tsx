@@ -16,6 +16,7 @@ import {
 
 import MenuIcon from "@mui/icons-material/Menu";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "@presentation/contexts/global-context";
 
 const pages = [
   {
@@ -31,11 +32,21 @@ const pages = [
     label: "Minhas categorias",
   },
 ];
-const settings = ["Logar", "Deslogar"];
+const settings = [
+  {
+    to: "/signin",
+    label: "Logar",
+  },
+  {
+    to: "/logout",
+    label: "Deslogar",
+  },
+];
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { storage } = useGlobalContext();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -62,6 +73,7 @@ const Header: React.FC = () => {
     <AppBar
       style={{
         backgroundColor: "#FFF",
+        display: `${pathname === "/signin" ? "none" : "inherit"}`,
       }}
       position="static"
     >
@@ -141,7 +153,11 @@ const Header: React.FC = () => {
             <Tooltip title="Configurações do perfil">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  alt="Liandro Wesley"
+                  alt={
+                    storage.get("userProperties") !== null
+                      ? storage.get("userProperties").userProperties.name
+                      : ""
+                  }
                   src="/static/images/avatar/2.jpg"
                 />
               </IconButton>
@@ -162,11 +178,29 @@ const Header: React.FC = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {storage.get("token") !== null && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    storage.remove("token");
+                    storage.remove("userProperties");
+                    navigate("/signin");
+                  }}
+                >
+                  <Typography textAlign="center">Deslogar</Typography>
                 </MenuItem>
-              ))}
+              )}
+
+              {storage.get("token") === null && (
+                <MenuItem
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    navigate("/signin");
+                  }}
+                >
+                  <Typography textAlign="center">Logar</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

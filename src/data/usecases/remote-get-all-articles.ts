@@ -1,6 +1,7 @@
 import { GetAllArticles } from "@domain/usecases/get-all-articles";
 import { HttpClient } from "@data/protocols/http";
 import { GetAllArticlesModel } from "@domain/models/get-all-articles-model";
+import validateResponse from "@data/protocols/http/delegate-transform-response";
 
 export class RemoteGetAllArticles implements GetAllArticles {
   constructor(
@@ -14,6 +15,6 @@ export class RemoteGetAllArticles implements GetAllArticles {
       method: "get",
     });
 
-    return httpResponse.body;
+    return validateResponse.validate(httpResponse);
   }
 }

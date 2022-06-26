@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": ".",
     "paths": {
       "@presentation/*": ["./src/presentation/*"],
       "@domain/*": ["./src/domain/*"],
       "@infra/*": ["./src/infra/*"],
       "@data/*": ["./src/data/*"],
-      "@main/*": ["./src/main"],
+      "@main/*": ["./src/main/*"],
+      "@validation/*": ["./src/validation/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -28,7 +25,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

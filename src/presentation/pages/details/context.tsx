@@ -46,12 +46,12 @@ export function DetailsConsumer({
         setLoading(true);
         const response = await getArticleDetails.search();
         setArticle(response);
-      } catch (err) {
+      } catch (err: any) {
         setLoading(false);
         setNotification({
           open: true,
           type: "error",
-          message: `${err} asad`,
+          message: `${err.message}`,
         });
         return navigate("/");
       } finally {

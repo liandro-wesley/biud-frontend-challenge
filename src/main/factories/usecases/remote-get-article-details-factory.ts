@@ -7,7 +7,7 @@ export const makeRemoteGetArticleDetails = (
   slug: string
 ): GetArticleDetails => {
   return new RemoteGetArticleDetails(
-    makeApiUrl(`article/details/${slug}`),
+    makeApiUrl(`/article/details/${slug}`),
     makeAxiosHttpClient()
   );
 };
