@@ -1,4 +1,3 @@
-import { DecodeAuthentication } from "@domain/usecases/decode-authentication";
 import { LocalStorageAdapter } from "@infra/local-storage-adapter";
 import {
   GlobalContextConsumer,
