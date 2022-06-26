@@ -14,7 +14,7 @@ type AuthenticationConsumerProps = {
 
 type InitialContextProps = {
   loading: boolean;
-  authenticate: (params: Params) => Promise<any>;
+  authenticate: (params: Params) => Promise<AuthenticationModel | undefined>;
 };
 
 export const AuthenticationContext = createContext<InitialContextProps>(

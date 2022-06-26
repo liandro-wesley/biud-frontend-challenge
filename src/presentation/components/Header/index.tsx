@@ -32,16 +32,6 @@ const pages = [
     label: "Minhas categorias",
   },
 ];
-const settings = [
-  {
-    to: "/signin",
-    label: "Logar",
-  },
-  {
-    to: "/logout",
-    label: "Deslogar",
-  },
-];
 
 const Header: React.FC = () => {
   const navigate = useNavigate();

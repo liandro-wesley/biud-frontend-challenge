@@ -1,7 +1,8 @@
-import { DecodeAuthenticationResult } from "@data/models/decode-authentication-result";
+import { DecodeAuthenticationModel } from "@domain/models/decode-authentication-model";
 import { DecodeAuthentication } from "@domain/usecases/decode-authentication";
 import { LocalStorageAdapter } from "@infra/local-storage-adapter";
 import React, { createContext, useContext, ReactNode, useState } from "react";
+import { NotificationConsumer } from "./notification-context";
 
 export type GlobalContextProps = {
   children: ReactNode;
@@ -11,7 +12,7 @@ export type GlobalContextProps = {
 
 type InitialContextProps = {
   loading: boolean;
-  decode: () => Promise<any>;
+  decode: () => Promise<DecodeAuthenticationModel | undefined>;
   storage: LocalStorageAdapter;
 };
 
@@ -35,8 +36,12 @@ export function GlobalContextConsumer({
       setLoading(true);
       const token = storage.get("token");
       const response = await decodeToken.decode(token);
-      await storage.set("userProperties", {
-        userProperties: response,
+      storage.set("userProperties", {
+        userProperties: {
+          id: response.id,
+          email: response.email,
+          name: response.name,
+        },
       });
       return response;
     } catch (err) {
@@ -53,6 +58,8 @@ export function GlobalContextConsumer({
     storage,
   };
   return (
-    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>
+      <NotificationConsumer>{children}</NotificationConsumer>
+    </GlobalContext.Provider>
   );
 }
