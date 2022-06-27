@@ -9,13 +9,10 @@ import { useFragmentStack } from "@presentation/components/FragmentStack/contex"
 type EditArticleProps = GetArticlesByAuthorResult & GetAllCategoriesModel;
 
 const EditArticle: React.FC<EditArticleProps> = ({
-  _id,
-  author,
   category,
   description,
   slug,
   title,
-  authorId,
   categories,
 }) => {
   const { setFragmentStack } = useFragmentStack();
