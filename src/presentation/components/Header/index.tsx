@@ -20,10 +20,6 @@ import { useGlobalContext } from "@presentation/contexts/global-context";
 
 const pages = [
   {
-    to: "/",
-    label: "Feed",
-  },
-  {
     to: "/my-posts",
     label: "Minhas publicações",
   },
@@ -98,6 +94,21 @@ const Header: React.FC = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <MenuItem>
+                <Button
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(`/`);
+                  }}
+                  sx={{
+                    color: `${pathname === "/" ? "#D81656" : "#374151"}`,
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  Feed
+                </Button>
+              </MenuItem>
               {pages.map((page) => (
                 <MenuItem key={page.label}>
                   <Button
@@ -121,22 +132,36 @@ const Header: React.FC = () => {
           <Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, gap: 1 }}
           >
-            {pages.map((page) => (
-              <Button
-                key={page.label}
-                onClick={() => {
-                  handleCloseNavMenu();
-                  navigate(`${page.to}`);
-                }}
-                sx={{
-                  color: `${pathname === page.to ? "#D81656" : "#374151"}`,
-                  display: "block",
-                  textDecoration: "none",
-                }}
-              >
-                {page.label}
-              </Button>
-            ))}
+            <Button
+              onClick={() => {
+                handleCloseNavMenu();
+                navigate(`/`);
+              }}
+              sx={{
+                color: `${pathname === "/" ? "#D81656" : "#374151"}`,
+                display: "block",
+                textDecoration: "none",
+              }}
+            >
+              Feed
+            </Button>
+            {storage.get("token") !== null &&
+              pages.map((page) => (
+                <Button
+                  key={page.label}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    navigate(`${page.to}`);
+                  }}
+                  sx={{
+                    color: `${pathname === page.to ? "#D81656" : "#374151"}`,
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  {page.label}
+                </Button>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

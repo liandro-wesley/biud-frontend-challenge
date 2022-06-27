@@ -1,6 +1,7 @@
 import { DecodeAuthenticationModel } from "@domain/models/decode-authentication-model";
 import { DecodeAuthentication } from "@domain/usecases/decode-authentication";
 import { LocalStorageAdapter } from "@infra/local-storage-adapter";
+import { FragmenStackConsumer } from "@presentation/components/FragmentStack/contex";
 import React, { createContext, useContext, ReactNode, useState } from "react";
 import { NotificationConsumer } from "./notification-context";
 
@@ -59,7 +60,9 @@ export function GlobalContextConsumer({
   };
   return (
     <GlobalContext.Provider value={value}>
-      <NotificationConsumer>{children}</NotificationConsumer>
+      <FragmenStackConsumer>
+        <NotificationConsumer>{children}</NotificationConsumer>
+      </FragmenStackConsumer>
     </GlobalContext.Provider>
   );
 }

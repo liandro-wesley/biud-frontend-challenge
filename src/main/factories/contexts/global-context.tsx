@@ -4,7 +4,7 @@ import {
   GlobalContextProps,
 } from "@presentation/contexts/global-context";
 import React from "react";
-import { makeDecodeAuthentication } from "../usecases/remote-decode-token-authentication";
+import { makeDecodeAuthentication } from "../usecases/remote-decode-token-authentication-factory";
 
 export const GlobalContext: React.FC<Pick<GlobalContextProps, "children">> = ({
   children,

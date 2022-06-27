@@ -3,6 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import { Snackbar, Alert } from "@mui/material";
 import { useNotification } from "@presentation/contexts/notification-context";
+import FragmenStack from "@presentation/components/FragmentStack";
 
 type DefaultLayoutProps = {
   children: React.ReactNode;
@@ -27,6 +28,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           {notification.message}
         </Alert>
       </Snackbar>
+      <FragmenStack />
       <CssBaseline />
       <Container
         sx={{
